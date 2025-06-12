@@ -1,0 +1,27 @@
+cd ~/Desktop/Upwork/project/n8n_scripts
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+
+
+docker run -it --rm \
+  -p 5678:5678 \
+  -v ~/.n8n:/home/node/.n8n \
+  -v ~/Desktop/Upwork/project/n8n_scripts:/data \
+  n8nio/n8n
+
+
+docker run -it --rm \
+  -p 5678:5678 \
+  -v ~/Desktop/Upwork/project/n8n_scripts:/data \
+  -v /Users/panagiotismavritsakis/anaconda3/envs/saas_summarizer/bin:/python_env \
+  n8nio/n8n
+
+apt update && apt install -y python3 python3-pip
+pip3 install -r ~/Desktop/Upwork/project/n8n_scripts/requirements.txt
+python3 /data/Email_sender.py
+
+
+docker exec -it keen_leakey bash
+
+docker exec -u 0 -it keen_leakey sh
